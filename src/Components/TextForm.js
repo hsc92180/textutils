@@ -12,6 +12,14 @@ export default function TextForm(props) {
         let newText = text.toUpperCase();
         setText(newText);
     }
+
+    const handleClearText = () => {
+      //console.log("Uppercase was clicked");
+      let textPlaceholder = document.getElementsByTagName("textarea")[0];
+      textPlaceholder.setAttribute("placeholder", "enter text here...");
+      let newText = '';
+      setText(newText);
+  }
     const handleOnChange = (event) => {
         //console.log("On change");
         setText(event.target.value);
@@ -25,8 +33,9 @@ export default function TextForm(props) {
         </label>
         <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8" placeholder="enter text here..."></textarea>
       </div>
-      <button className="btn btn-primary" onClick={handleUpperCase}>Convert to UpperCase</button>
+      <button className="btn btn-primary my-2 mx-2" onClick={handleUpperCase}>Convert to UpperCase</button>
       <button className="btn btn-primary mx-2" onClick={handleLowerCase}>Convert to LowerCase</button>
+      <button className="btn btn-danger mx-2" onClick={handleClearText}>Clear Text</button>
       <div className="container my-3">
         <h3>Your Text Summary</h3>
         {/* count words and characters */}
